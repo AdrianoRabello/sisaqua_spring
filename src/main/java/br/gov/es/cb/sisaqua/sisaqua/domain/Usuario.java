@@ -4,11 +4,17 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-@Entity(name = "usuario")
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+@Table(name = "usuario")
 public class Usuario implements Serializable{
 	
 	
@@ -21,6 +27,7 @@ public class Usuario implements Serializable{
 	 */
 	@Id
 	@Column(name = "idUsuario")	
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idUsuario;
 	private String nomeUsuario;
 	private String funcional;
@@ -29,10 +36,11 @@ public class Usuario implements Serializable{
 	private String email;	
 	
 	@ManyToOne
-	//@JoinColumn(name = "idUnidade")
+	@JoinColumn(name = "idUnidade")
 	private Unidade idUnidade;
 	
-	//@ManyToOne
+	
+	@ManyToOne(targetEntity = Cargo.class)
 	@JoinColumn(name = "idCargo")
 	private Cargo idCargo; 
 	

@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity(name = "unidade")
 public class Unidade implements Serializable{
 	
@@ -28,7 +30,8 @@ public class Unidade implements Serializable{
 	@Column(name = "nomeUnidade")
 	private String nomeUnidade; 
 	
-	@OneToMany(cascade = CascadeType.ALL) 
+	@JsonIgnore
+	@OneToMany(mappedBy = "idUnidade")
 	private List<Usuario> usuarios = new ArrayList<>();
 	
 	

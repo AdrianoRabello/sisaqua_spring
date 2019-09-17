@@ -1,14 +1,20 @@
 package br.gov.es.cb.sisaqua.sisaqua.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
-//@Entity(name = "cargo")
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity(name = "cargo")
 public class Cargo implements Serializable{
 	
 	
@@ -22,6 +28,19 @@ public class Cargo implements Serializable{
 	@Column(name = "idCargo")
 	private Integer idCargo;
 	private String descricao;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "idCargo")
+	private List<Usuario> usuarios = new ArrayList<>();
+	
+	
+	
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
 	public Integer getIdCargo() {
 		return idCargo;
 	}

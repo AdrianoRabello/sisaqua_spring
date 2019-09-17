@@ -7,6 +7,8 @@ import br.gov.es.cb.sisaqua.sisaqua.domain.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
+
+	
 	
 	
 }
