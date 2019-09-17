@@ -35,7 +35,7 @@ public class UsuarioResource {
 	@RequestMapping("/{id}")
 	public ResponseEntity<Usuario> findByID(@PathVariable Integer id) {
 		
-		Usuario usuario = service.findById(9);
+		Usuario usuario = service.findById(id);
 		
 		return new ResponseEntity<Usuario>(usuario,HttpStatus.OK);
 		

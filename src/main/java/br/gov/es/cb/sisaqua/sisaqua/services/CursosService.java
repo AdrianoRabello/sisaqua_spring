@@ -13,15 +13,15 @@ import br.gov.es.cb.sisaqua.sisaqua.repositores.CursosRepository;
 public class CursosService {
 	
 	@Autowired
-	private CursosRepository cursosRepository;
+	private CursosRepository repository;
 	
 	
 	
 	
 	public List<Cursos> getList(){
 		
-		System.out.println("dentro do meotdo list ");
-		List<Cursos> list = cursosRepository.findAll();
+		//System.out.println("dentro do meotdo list ");
+		List<Cursos> list = repository.findAll();
 		
 		return list;
 	}
@@ -29,7 +29,7 @@ public class CursosService {
 	public Cursos find(Integer id) {
 		
 		System.out.println("dentro do meotdo find ");
-		Optional<Cursos> curso =  cursosRepository.findById(id);
+		Optional<Cursos> curso =  repository.findById(id);
 		
 		return curso.orElse(null);
 		
