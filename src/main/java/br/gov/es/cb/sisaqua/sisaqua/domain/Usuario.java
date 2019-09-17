@@ -28,12 +28,13 @@ public class Usuario implements Serializable{
 	private String senha;
 	private String email;	
 	
-	//@ManyToOne
+	@ManyToOne
+	//@JoinColumn(name = "idUnidade")
+	private Unidade idUnidade;
 	
-	private Unidade unidade;
-	
 	//@ManyToOne
-	private Cargo   Cargo;
+	@JoinColumn(name = "idCargo")
+	private Cargo idCargo; 
 	
 	
 	public Usuario() {
@@ -79,21 +80,21 @@ public class Usuario implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Unidade getUnidade() {
-		return unidade;
+	public Unidade getIdUnidade() {
+		return idUnidade;
 	}
-	public void setUnidade(Unidade unidade) {
-		this.unidade = unidade;
+	public void setIdUnidade(Unidade unidade) {
+		this.idUnidade = unidade;
 	}
-	public Cargo getCargo() {
-		return Cargo;
+	public Cargo getIdCargo() {
+		return idCargo;
 	}
-	public void setCargo(Cargo cargo) {
-		Cargo = cargo;
+	public void setIdCargo(Cargo cargo) {
+		idCargo = cargo;
 	}
 	
 	
-	@Override
+	@Override 
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;

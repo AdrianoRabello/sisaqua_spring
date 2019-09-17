@@ -4,15 +4,16 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
-//@Entity(name = "unidade")
-
+@Entity(name = "unidade")
 public class Unidade implements Serializable{
 	
 	/**
@@ -25,9 +26,9 @@ public class Unidade implements Serializable{
 	private Integer idUnidade;
 	
 	@Column(name = "nomeUnidade")
-	private String nomeUnidade;
+	private String nomeUnidade; 
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL) 
 	private List<Usuario> usuarios = new ArrayList<>();
 	
 	
@@ -41,7 +42,7 @@ public class Unidade implements Serializable{
 	public String getNomeUnidade() {
 		return nomeUnidade;
 	}
-	public void setNomeUnidade(String nomeUnidade) {
+	public void setNomeUnidade(String nomeUnidade) { 
 		this.nomeUnidade = nomeUnidade;
 	}
 	public List<Usuario> getUsuarios() {

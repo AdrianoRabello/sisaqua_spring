@@ -1,5 +1,8 @@
 package br.gov.es.cb.sisaqua.sisaqua.services;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +18,21 @@ public class CursosService {
 	
 	
 	
-	public java.util.List<Cursos> getList(){
+	public List<Cursos> getList(){
 		
-		java.util.List<Cursos> list = cursosRepository.findAll();
+		System.out.println("dentro do meotdo list ");
+		List<Cursos> list = cursosRepository.findAll();
 		
 		return list;
+	}
+	
+	public Cursos find(Integer id) {
+		
+		System.out.println("dentro do meotdo find ");
+		Optional<Cursos> curso =  cursosRepository.findById(id);
+		
+		return curso.orElse(null);
+		
 	}
 	
 }
