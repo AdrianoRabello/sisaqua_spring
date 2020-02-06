@@ -15,9 +15,9 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository repository;
 
-	public Usuario findById(Integer id) {
+	public Usuario findById(Long id) { 
 
-		Optional<Usuario> usuario = repository.findById(id);
+		Optional<Usuario> usuario = repository.findById(id);  
 
 		return usuario.orElse(null);
 	}
@@ -27,5 +27,10 @@ public class UsuarioService {
 		List<Usuario> usuarios = repository.findAll();
 
 		return usuarios;
+	}
+
+	public Usuario findByFuncional(String nf) {
+		// TODO Auto-generated method stub
+		return this.repository.findByFuncional(nf);
 	}
 }

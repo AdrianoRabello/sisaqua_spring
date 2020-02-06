@@ -3,15 +3,17 @@ package br.gov.es.cb.sisaqua.sisaqua.domain;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.hibernate.annotations.Columns;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import lombok.Data;
 
 @Entity
+@Data
 public class Cursos implements Serializable {
 	
 	
@@ -21,70 +23,51 @@ public class Cursos implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idCurso")
-	private Integer idCurso;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	private Long id;
 	
-	@Column(name = "nomeCurso") 
-	private String nomeCurso;
+	
+	/*private String nome;
 	
 	private String descricao;
 	
-	private Date dataValidade;
+	@JsonFormat(pattern="yyyy-MM-dd")
+
+	private Date validade;
 	
-	@Column(name = "cargaHoraria")
+
 	private Integer cargaHoraria;
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cursos other = (Cursos) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}*/
 	
 	
 	
-	
-	public Cursos() { 
-	
-	}
-	
-	
-	public Cursos(Integer idCurso, String nomeCurso, String descricao, Date dataValidade, Integer cargaHoraria) {
-		super();
-		this.idCurso = idCurso;
-		this.nomeCurso = nomeCurso;
-		this.descricao = descricao;
-		this.dataValidade = dataValidade;
-		this.cargaHoraria = cargaHoraria;
-	}
-	
-	
-	public Integer getId() {
-		return idCurso;
-	}
-	public void setId(Integer id) {
-		this.idCurso = id;
-	}
-	public String getNomeCurso() {
-		return nomeCurso;
-	}
-	public void setNomeCurso(String nomeCurso) {
-		this.nomeCurso = nomeCurso;
-	}
-	public String getDescricao() {
-		return descricao;
-	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-	public Date getDataValidade() {
-		return dataValidade;
-	}
-	public void setDataValidade(Date dataValidade) {
-		this.dataValidade = dataValidade;
-	}
-	public Integer getCargaHoraria() {
-		return cargaHoraria;
-	}
-	public void setCargaHoraria(Integer cargaHoraria) {
-		this.cargaHoraria = cargaHoraria;
-	}
-	
-	
+
 	
 	
 }

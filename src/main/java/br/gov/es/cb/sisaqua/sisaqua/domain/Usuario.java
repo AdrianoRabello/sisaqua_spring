@@ -1,20 +1,23 @@
 package br.gov.es.cb.sisaqua.sisaqua.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.Data;
+
+
+@Data
 @Entity
-@Table(name = "usuario")
 public class Usuario implements Serializable{
 	
 	
@@ -26,106 +29,34 @@ public class Usuario implements Serializable{
 	 * 
 	 */
 	@Id
-	@Column(name = "idUsuario")	
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer idUsuario;
-	private String nomeUsuario;
+	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;	
+	private String nome;
 	private String funcional;
 	private String login;
 	private String senha;
 	private String email;	
 	
-	@ManyToOne
-	@JoinColumn(name = "idUnidade")
-	private Unidade idUnidade;
+	@ManyToOne	
+	private Unidade unidade;
 	
 	
-	@ManyToOne(targetEntity = Cargo.class)
-	@JoinColumn(name = "idCargo")
-	private Cargo idCargo; 
+	@ManyToOne	
+	private Cargo cargo; 
 	
 	
-	public Usuario() {
-		
-	}
+	@OneToMany
+	@JsonIgnore
+	private List<Ocorrencia> ocorrencias = new ArrayList<Ocorrencia>();
+	
+	@OneToMany
+	@JsonIgnore
+	private List<RelatorioDiario> relatorioDiario = new ArrayList<RelatorioDiario>();
 	
 	
-	
-	
-	public Integer getIdUsuario() {
-		return idUsuario;
-	}
-	public void setIdUsuario(Integer idUsuario) {
-		this.idUsuario = idUsuario;
-	}
-	public String getNomeUsuario() {
-		return nomeUsuario;
-	}
-	public void setNomeUsuario(String nomeUsuario) {
-		this.nomeUsuario = nomeUsuario;
-	}
-	public String getFuncional() {
-		return funcional;
-	}
-	public void setFuncional(String funcional) {
-		this.funcional = funcional;
-	}
-	public String getLogin() {
-		return login;
-	}
-	public void setLogin(String login) {
-		this.login = login;
-	}
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public Unidade getIdUnidade() {
-		return idUnidade;
-	}
-	public void setIdUnidade(Unidade unidade) {
-		this.idUnidade = unidade;
-	}
-	public Cargo getIdCargo() {
-		return idCargo;
-	}
-	public void setIdCargo(Cargo cargo) {
-		idCargo = cargo;
-	}
-	
-	
-	@Override 
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((idUsuario == null) ? 0 : idUsuario.hashCode());
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Usuario other = (Usuario) obj;
-		if (idUsuario == null) {
-			if (other.idUsuario != null)
-				return false;
-		} else if (!idUsuario.equals(other.idUsuario))
-			return false;
-		return true;
-	}
-	
+
+
 	
 	
 	

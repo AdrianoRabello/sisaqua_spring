@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Profile;
 
 @Configuration
 @Profile("dev")
-public class DevConfig {
+public class DevConfig { 
 	
 	@Autowired
 	//private DBService dbService;

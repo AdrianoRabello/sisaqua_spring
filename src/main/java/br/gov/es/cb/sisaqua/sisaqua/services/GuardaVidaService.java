@@ -1,7 +1,6 @@
 package br.gov.es.cb.sisaqua.sisaqua.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,15 +14,18 @@ public class GuardaVidaService {
 	@Autowired
 	private GuardaVidaRepository repository;
 
+	@Autowired
+	private CursoGuardaVidaService cursoGuardaVidaService;
+
 	public List<GuardaVida> list() {
 
 		return repository.findAll();
 	}
 
-	public GuardaVida find(Integer id) {
+	public GuardaVida save(GuardaVida object) {
+		// TODO Auto-generated method stub
 
-		Optional<GuardaVida> guardaVida = repository.findById(id);
-
-		return guardaVida.orElse(null);
+		return repository.save(object);
 	}
+
 }

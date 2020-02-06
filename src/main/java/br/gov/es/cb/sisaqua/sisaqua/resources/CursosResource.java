@@ -12,23 +12,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.gov.es.cb.sisaqua.sisaqua.domain.Cursos;
-import br.gov.es.cb.sisaqua.sisaqua.services.CursosService;
+import br.gov.es.cb.sisaqua.sisaqua.services.CursoService;
 
 @RestController
 @RequestMapping(value = "cursos")
 public class CursosResource {
 	
 	@Autowired 
-	private CursosService cursosService;
+	private CursoService cursosService;
 	
 	
 	
 	@RequestMapping(value = "/{id}",method = RequestMethod.GET)
 	public ResponseEntity<Cursos> getCurso(@PathVariable Integer id){
 		
-		Cursos curso = cursosService.find(id);
+		Cursos curso = cursosService.find(id); 
 		
-		return new ResponseEntity<Cursos>(curso,HttpStatus.OK);
+		return new ResponseEntity<Cursos>(curso,HttpStatus.OK); 
 	}
 	
 	@GetMapping
